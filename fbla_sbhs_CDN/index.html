@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+    <title>TEST</title>
+</head>
+<body>
+      <nav class="navbar is-link is-fixed-bottom" role="navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-home"></i>
+            <p class="is-size-7">Home</p>
+          </a>
+          <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-list"></i>
+            <p class="is-size-7">About</p>
+          </a>
+          <a class="navbar-item is-expanded is-block has-text-centered">
+            <i class="fa fa-users"></i>
+            <p class="is-size-7">Team</p>
+          </a>
+          <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-address-card"></i>
+            <p class="is-size-7">Contact</p>
+          </a>
+        </div>
+      </nav>
+      <div id="home">
+      <div class="section">
+        <section class="hero is-medium is-danger is-bold">
+            <div class="hero-body">
+              <div class="container">
+                <h1 class="title">
+                  Next Meeting
+                </h1>
+                <h2 class="subtitle">
+                 📅 January 1st
+                  <br>
+                  ⏰ 3:00 - 4:20
+                  <br>
+                 📍Freshmen D302
+                </h2>
+              </div>
+            </div>
+          </section>
+         <div class="usr-links">
+
+         <center>
+
+                <div class="card quote-card">
+                        <div class="card-content">
+                          <p class="title">
+                            “Always deliver more than expected.”
+                          </p>
+                          <p class="subtitle">
+                             Larry Page, co-founder of Google
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="card quote-card">
+                            <div class="card-content">
+                              <p class="title">
+                                Signup for some event
+                              </p>
+                            </div>
+                          </div>
+                     <div style="margin-top: 20px;"> <button class="button is-info is-rounded join-btn" style="background: #BE2B37;">Join FBLA</button>
+                        <button style="background: #00529B;" class="button is-info is-rounded fbla-link " onclick="window.open(`https://www.fbla-pbl.org/`)"> <i class="fas fa-external-link-alt"></i></button></div>
+
+                <div class="social-space">
+
+                        <button class="button is-medium" style="background: #3b5998;">
+                                <span class="icon">
+                                  <i class="fab fa-facebook fa-lg"></i>
+                                </span>
+                              </button>
+
+                        <button class="button is-medium" style="background:#1da1f2">
+                                <span class="icon">
+                                  <i class="fab fa-twitter fa-lg"></i>
+                                </span>
+                              </button>
+                              <button class="button is-medium" style="background:#e1306c">
+                                      <span class="icon">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                      </span>
+                                    </button>
+
+                                    <button class="button is-medium" style="background:#0077b5">
+                                            <span class="icon">
+                                              <i class="fab fa-linkedin fa-lg"></i>
+                                            </span>
+                                          </button>
+                </div>
+            </center>
+         </div>
+        </div>
+
+      </div>
+<script>
+// Get all "navbar-burger" elements
+var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach(function($el) {
+    $el.addEventListener('click', function() {
+
+      // Get the target from the "data-target" attribute
+      var target = $el.dataset.target;
+      var $target = document.getElementById(target);
+
+      // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+      $el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+</script>
+<style>
+.navbar-burger {
+  margin-left: 0;
+  margin-right: auto;
+}
+.navbar.is-link, .navbar.is-link:hover{
+    background: #BE2B37;
+}
+.hero{
+    border-radius: 10px;
+}
+.usr-links{
+    margin-top: 20px;
+    font-size: 30px;
+}
+.usr-links .fas {
+  padding: 7px;
+}
+.join-btn,.fbla-link{
+    height: 60px;
+    width: 200px;
+    border-radius: 50px;
+}
+.fbla-link{
+    width: 80px;
+}
+.quote-card{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.social-space{
+    margin-top: 20px;
+}
+.social-space button{
+    border-radius: 25px;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 50;
+}
+</style>
+</body>
+</html>
