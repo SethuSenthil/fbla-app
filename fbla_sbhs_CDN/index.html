@@ -5,30 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
     <title>TEST</title>
+    <script>
+    let screenState = 'home';
+
+    </script>
 </head>
 <body>
       <nav class="navbar is-link is-fixed-bottom" role="navigation">
         <div class="navbar-brand">
-          <a class="navbar-item is-expanded  is-block has-text-centered">
+          <a class="navbar-item is-expanded  is-block has-text-centered" onclick="changeScreen('home')">
             <i class="fa fa-home"></i>
             <p class="is-size-7">Home</p>
           </a>
-          <a class="navbar-item is-expanded  is-block has-text-centered">
+          <a class="navbar-item is-expanded  is-block has-text-centered" onclick="changeScreen('about')">
             <i class="fa fa-list"></i>
             <p class="is-size-7">About</p>
           </a>
-          <a class="navbar-item is-expanded is-block has-text-centered">
+          <a class="navbar-item is-expanded is-block has-text-centered" onclick="changeScreen('team')">
             <i class="fa fa-users"></i>
             <p class="is-size-7">Team</p>
           </a>
-          <a class="navbar-item is-expanded  is-block has-text-centered">
+          <a class="navbar-item is-expanded  is-block has-text-centered" onclick="changeScreen('contact')">
             <i class="fa fa-address-card"></i>
             <p class="is-size-7">Contact</p>
+
           </a>
         </div>
       </nav>
+
       <div id="home">
+      <center> <h1 class="title tidle">Home</h1></center>
       <div class="section">
+        <div id="particles-js"></div>
         <section class="hero is-medium is-danger is-bold">
             <div class="hero-body">
               <div class="container">
@@ -49,21 +57,21 @@
 
          <center>
 
-                <div class="card quote-card">
+                <div class="card quote-card wow fadeInUp">
                         <div class="card-content">
-                          <p class="title">
+                          <p class="title" id="quote-text">
                             “Always deliver more than expected.”
                           </p>
-                          <p class="subtitle">
+                          <p class="subtitle" id="quote-author">
                              Larry Page, co-founder of Google
                           </p>
                         </div>
                       </div>
 
-                      <div class="card quote-card">
+                      <div class="card quote-card wow fadeInUp">
                             <div class="card-content">
                               <p class="title">
-                                Signup for some event
+                                Signup for some evenhht
                               </p>
                             </div>
                           </div>
@@ -94,18 +102,64 @@
                                               <i class="fab fa-linkedin fa-lg"></i>
                                             </span>
                                           </button>
-                                          <rssapp-list id="Xa49L96bUEbU9MFk"></rssapp-list>
+                                          <rssapp-list id="9AMjPp6eu3RE2EY5"></rssapp-list>
                 </div>
             </center>
          </div>
         </div>
 
       </div>
+
+
+      <div id="about">
+        <center> <h1 class="title tidle">About</h1></center>
+        <div class="section">
+           <center>
+                 About
+              </center>
+           </div>
+           </div>
+          </div>
+
+        </div>
+
+        <div id="team">
+          <center> <h1 class="title tidle">Team</h1></center>
+          <div class="section">
+             <center>
+              <span id="contact-inject"> </span>
+
+                </center>
+             </div>
+             </div>
+            </div>
+
+          </div>
+
+          <div id="contact">
+            <center> <h1 class="title tidle">Contact</h1></center>
+            <div class="section">
+               <center>
+
+
+                  </center>
+               </div>
+               </div>
+              </div>
+
+            </div>
+
+
+
     <script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" integrity="sha256-+u54FaX9J+k40eAcg5K2YzICSQjrEYBI9gju5nE3HfY=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U=" crossorigin="anonymous"></script>
 <script>
+                new WOW().init();
+
 // Get all "navbar-burger" elements
 var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
 // Check if there are any navbar burgers
 if ($navbarBurgers.length > 0) {
 
@@ -124,8 +178,174 @@ if ($navbarBurgers.length > 0) {
     });
   });
 }
+var style = document.createElement('style')
+style.innerHTML = '.ra-header { visibility: hidden; }'
+
+var checkExist = setInterval(function() {
+   if (document.getElementById('9AMjPp6eu3RE2EY5').innerText != null) {
+      document.getElementById('9AMjPp6eu3RE2EY5').shadowRoot.appendChild( style )
+      clearInterval(checkExist);
+   }
+}, 100);
+
+function changeScreen(screenName){
+  if(screenName != screenState){
+    document.getElementById(screenState).style.display = 'none'
+    document.getElementById(screenName).style.display = 'block'
+    screenState = screenName
+  }
+}
+
+let cardInject = document.getElementById('contact-inject')
+
+//card data
+let cardData = [
+  ['Name','Position','https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg'],
+  ['Name','Position','https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg'],
+  ['Name','Position','https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg'],
+  ['Name','Position','https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg']
+]
+
+for (let i = 0; i < cardData.length; i++) {
+  const officer = cardData[i];
+  const html = `
+<div class="card testimonial-card wow fadeInUp" style="max-width: 22rem;">
+
+<!-- Background color -->
+<div class="card-up indigo lighten-1"></div>
+
+<!-- Avatar -->
+<div class="avatar mx-auto white">
+  <img src="${officer[2]}" class="rounded-circle" alt="woman avatar">
+</div>
+<!-- Content -->
+<div class="card-body">
+  <!-- Name -->
+  <h4 class="card-title">${officer[0]}</h4>
+  <hr>
+  <!-- Quotation -->
+  <p><i class="fas fa-circle"></i> ${officer[1]}</p>
+</div>
+
+</div>`
+cardInject.innerHTML += html
+}
+particlesJS("particles-js", {
+    "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 982.0472365193136
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": false,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": false,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": false,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+});
 </script>
+<script src="quotes.js"></script>
 <style>
+  #about, #team, #contact{
+    display: none;
+  }
   .ra-header{
     display: none !important;
   }
@@ -133,11 +353,24 @@ if ($navbarBurgers.length > 0) {
   margin-left: 0;
   margin-right: auto;
 }
-.navbar.is-link, .navbar.is-link:hover{
+.navbar.is-link{
     background: #BE2B37;
+}
+.navbar{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px
+}
+.navbar-item:hover{
+  background: black !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.navbar.is-link .navbar-brand > .navbar-item, .navbar.is-link .navbar-brand .navbar-link{
+  border-radius: 15px;
 }
 .hero{
     border-radius: 10px;
+    border-radius: 30px;
+
 }
 .usr-links{
     margin-top: 20px;
@@ -167,6 +400,78 @@ if ($navbarBurgers.length > 0) {
     border: none;
     width: 60px;
     height: 50;
+}
+.navbar{
+  min-height: 4.25rem;
+}
+.tidle{
+  padding-top: 15px;
+}
+#particles-js canvas {
+    display: block;
+    vertical-align: bottom;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease
+}
+
+#particles-js {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0
+}
+
+@media all{
+*,*::before,*::after{box-sizing:border-box;}
+hr{box-sizing:content-box;height:0;overflow:visible;}
+h4{margin-top:0;margin-bottom:0.5rem;}
+p{margin-top:0;margin-bottom:1rem;}
+img{vertical-align:middle;border-style:none;}
+h4{margin-bottom:0.5rem;font-weight:500;line-height:1.2;}
+h4{font-size:1.5rem;}
+hr{margin-top:1rem;margin-bottom:1rem;border:0;border-top:1px solid rgba(0, 0, 0, 0.1);}
+.card{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0, 0, 0, 0.125);border-radius:0.25rem;}
+.card-body{-ms-flex:1 1 auto;flex:1 1 auto;min-height:1px;padding:1.25rem;}
+.card-title{margin-bottom:0.75rem;}
+.rounded-circle{border-radius:50%!important;}
+.mx-auto{margin-right:auto!important;}
+.mx-auto{margin-left:auto!important;}
+@media print{
+*,*::before,*::after{text-shadow:none!important;box-shadow:none!important;}
+img{page-break-inside:avoid;}
+p{orphans:3;widows:3;}
+}
+.card-body{padding-top:1.5rem;padding-bottom:1.5rem;-webkit-border-radius:0!important;border-radius:0!important;}
+.fas{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1;}
+.fa-quote-left:before{content:"\f10d";}
+.fas{font-family:"Font Awesome 5 Free";}
+.fas{font-weight:900;}
+.indigo.lighten-1{background-color:#5c6bc0!important;}
+.indigo{background-color:#3f51b5!important;}
+.white{background-color:#fff!important;}
+:disabled{pointer-events:none!important;}
+h4{font-weight:300;}
+.card{font-weight:400;border:0;-webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
+.card .card-body h4{font-weight:400;}
+.testimonial-card .card-up{height:120px;overflow:hidden;border-top-left-radius:.25rem;border-top-right-radius:.25rem;}
+.testimonial-card .avatar{width:120px;margin-top:-60px;overflow:hidden;border:5px solid #fff;border-radius:50%;}
+.testimonial-card .avatar img{width:100%;}
+.testimonial-card .card-body{text-align:center;}
+.card-body{padding-top:1.5rem;padding-bottom:1.5rem;border-radius:0!important;}
+.card-body{padding-top:1.5rem;padding-bottom:1.5rem;border-radius:0!important;}
+}
+/*! CSS Used fontfaces */
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:400;font-display:auto;src:url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.eot);src:url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.eot#iefix) format("embedded-opentype"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.woff2) format("woff2"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.woff) format("woff"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.ttf) format("truetype"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-regular-400.svg#fontawesome) format("svg");}
+@font-face{font-family:"Font Awesome 5 Free";font-style:normal;font-weight:900;font-display:auto;src:url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.eot);src:url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.eot#iefix) format("embedded-opentype"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.woff2) format("woff2"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.woff) format("woff"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.ttf) format("truetype"), url(https://z9t4u9f6.stackpathcdn.com/wp-content/themes/mdbootstrap4/font/fa5/fa-solid-900.svg#fontawesome) format("svg");}
+
+.testimonial-card{
+  margin-top: 10px;
 }
 </style>
 </body>

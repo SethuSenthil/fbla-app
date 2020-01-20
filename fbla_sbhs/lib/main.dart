@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFF00529B),
         ),
         body: WebView(
-        initialUrl: 'https://sethusenthil.com/fbla-app/fbla_sbhs_CDN/index.html',
+        initialUrl: 'http://192.168.68.133:5500',
         javascriptMode: JavascriptMode.unrestricted,
         )
       ),

@@ -12,3 +12,10 @@ const quote = [
     ['Success is often achieved by those who don’t know that failure is inevitable.','Coco Chanel'],
     ['I never dreamed about success. I worked for it.','Estée Lauder']
 ]
+
+//choose random quote
+let ranQuote = quote[Math.floor(Math.random()*quote.length)];
+
+//render the random quote in the DOM
+document.getElementById('quote-text').innerText = ranQuote[0]
+document.getElementById('quote-author').innerText = ranQuote[1]
