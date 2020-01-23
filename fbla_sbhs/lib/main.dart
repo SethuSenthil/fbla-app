@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFF00529B),
         ),
         body: WebView(
-        initialUrl: 'https://sethusenthil.com/fbla-app/fbla_sbhs_CDN/index.html',
+        //initialUrl: 'https://sethusenthil.com/fbla-app/fbla_sbhs_CDN/index.html',
+        // JAMES: open shortcut -> ngrok http (port number, usually 5500)
+        initialUrl: '',
         javascriptMode: JavascriptMode.unrestricted,
         )
       ),
