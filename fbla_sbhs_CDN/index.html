@@ -117,7 +117,11 @@
            <center>
                  FBLA (Future Businesss Leaders of America)
                  The program was foundedd in 1940 by Hamden L. Forkner
+<<<<<<< HEAD
+                 is the premier business education association in the country.
+=======
                  is the premier business education association in the country. 
+>>>>>>> 722ce2332a2046b664b1da5808d96a4a9a73dbd6
                  The mission of FBLA-PBL is to bring business and education together in a positive working relationship through innovative leadership and career development programs.
                  Headquraters are located in Reston, Virginia
                  The official colors are Navy-Blue and Gold
@@ -222,13 +226,21 @@ let cardData = [
 
 for (let i = 0; i < cardData.length; i++) {
   const officer = cardData[i];
+<<<<<<< HEAD
+  const colors = ['#3f51b5' , '#c2185b', '#26a69a','#43a047']
+=======
   const colors = ['aqua-gradient' , 'purple-gradient', 'peach-gradient','blue-gradient']
+>>>>>>> 722ce2332a2046b664b1da5808d96a4a9a73dbd6
   const ranColor = colors[Math.floor(Math.random()*colors.length)];
   const html = `
 <div class="card testimonial-card wow fadeInUp" style="max-width: 22rem;">
 
 <!-- Background color -->
+<<<<<<< HEAD
+<div class="card-up" style = "background-color:${ranColor}"></div>
+=======
 <div class="card-up indigo ${ranColor}"></div>
+>>>>>>> 722ce2332a2046b664b1da5808d96a4a9a73dbd6
 
 <!-- Avatar -->
 <div class="avatar mx-auto white">
