@@ -44,7 +44,7 @@
                   Next Meeting
                 </h1>
                 <h2 class="subtitle">
-                 📅 January 23rd
+                 📅 Feburary 20rd
                   <br>
                   ⏰ 2:30 - 4:00
                   <br>
@@ -222,11 +222,13 @@ let cardData = [
 
 for (let i = 0; i < cardData.length; i++) {
   const officer = cardData[i];
+  const colors = ['aqua-gradient' , 'purple-gradient', 'peach-gradient','blue-gradient']
+  const ranColor = colors[Math.floor(Math.random()*colors.length)];
   const html = `
 <div class="card testimonial-card wow fadeInUp" style="max-width: 22rem;">
 
 <!-- Background color -->
-<div class="card-up indigo lighten-1"></div>
+<div class="card-up indigo ${ranColor}"></div>
 
 <!-- Avatar -->
 <div class="avatar mx-auto white">
