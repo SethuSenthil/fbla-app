@@ -39,18 +39,18 @@
       <center> <h1 class="title tidle">Home</h1></center>
       <div class="section">
         <div id="particles-js"></div>
-        <section class="hero is-medium is-danger is-bold">
+        <section class="hero is-medium is-bold">
             <div class="hero-body">
               <div class="container">
                 <h1 class="title">
                   Next Meeting
                 </h1>
                 <h2 class="subtitle">
-                 📅 Feburary 20rd
+                 📅 May 21st
                   <br>
-                  ⏰ 2:30 - 4:00
+                  ⏰ 2:30 AM -4:00 PM
                   <br>
-                 📍Freshmen cafeteria
+                 📍Google Classroom
                 </h2>
               </div>
             </div>
@@ -59,7 +59,7 @@
 
          <center>
 
-                <div class="card quote-card wow fadeInUp">
+                <div class="card quote-card wow fadeInUp" onclick="randoQuote()" style="z-index: 100">
                         <div class="card-content">
                           <p class="title" id="quote-text">
                             “Always deliver more than expected.”
@@ -67,6 +67,8 @@
                           <p class="subtitle" id="quote-author">
                              Larry Page, co-founder of Google
                           </p>
+                          <i class="fas fa-sync-alt color-grad"></i>
+
                         </div>
                       </div>
 
@@ -82,24 +84,24 @@
 
                 <div class="social-space">
 
-                        <button class="button is-medium" style="background: #3b5998;">
+                        <button class="button is-medium" style="background: #3b5998;" onclick="window.open('https://www.facebook.com/FutureBusinessLeaders/')">
                                 <span class="icon">
                                   <i class="fab fa-facebook fa-lg"></i>
                                 </span>
                               </button>
 
-                        <button class="button is-medium" style="background:#1da1f2">
+                        <button class="button is-medium" style="background:#1da1f2" onclick="window.open('https://twitter.com/FBLA_National')">
                                 <span class="icon">
                                   <i class="fab fa-twitter fa-lg"></i>
                                 </span>
                               </button>
-                              <button class="button is-medium" style="background:#e1306c">
+                              <button class="button is-medium" style="background:#e1306c" onclick="window.open('https://www.instagram.com/fbla_pbl/')">
                                       <span class="icon">
                                         <i class="fab fa-instagram fa-lg"></i>
                                       </span>
                                     </button>
 
-                                    <button class="button is-medium" style="background:#0077b5">
+                                    <button class="button is-medium" style="background:#0077b5" onclick="window.open('https://www.linkedin.com/company/fbla-pbl')">
                                             <span class="icon">
                                               <i class="fab fa-linkedin fa-lg"></i>
                                             </span>
@@ -127,16 +129,21 @@
                <br>
                <br>
                <center> <h1 class="title tidle">Your Stats</h1></center>
-               Student ID: <b>10023088</b>
+               <canvas width="320" height="240" id="picture"></canvas>
+
+               <center><h3 id="takeapic">Take a picture of you ID</h3></center>
+			<input id="Take-Picture" type="file" accept="image/*;capture=camera" />
+      <p id="textbit"></p>
+
                <br>
-               Name: <b>Sethu Narayan Senthil</b>
+               Name: <b id="usrname">Scan ID</b>
                <br>
-               Attendance Count: <b>3</b> Meetings
+               Attendance Count: <b id="meetings">Scan ID</b> Meetings
                <br>
+               Grade: <b id="grade">Scan ID</b>
                <br>
                <br> <br>
                <br>
-               <button>Log Out</button>
                <br> <br>
                <br>
                <br> <br>
@@ -198,6 +205,111 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" integrity="sha256-+u54FaX9J+k40eAcg5K2YzICSQjrEYBI9gju5nE3HfY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha256-eVNjHw5UeU0jUqPPpZHAkU1z4U+QFBBY488WvueTm88=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="./JOB.js"></script>
+
+<script>
+
+  function updateStats(res){
+    document.querySelector('#takeapic').style.display ='none'
+    document.querySelector('#picture').style.display = 'block'
+    document.querySelector('#Take-Picture').style.display ='none'
+    console.log(res)
+      let name = '', meetings = 0, grade = 9
+      if(res == '10023088' || res == '10023588'){
+        name = 'Sethu Narayan Senthil'
+        grade = 11
+        meetings = 4
+      }else if(res == '10014342'){
+        name = 'James Pan'
+        grade = 11
+        meetings = 5
+      }else{
+        name = 'Sethu Senthil'
+        grade = 11
+        meetings = 6
+      }
+     document.querySelector('#usrname').innerText = name
+     document.querySelector('#grade').innerText = grade
+     document.querySelector('#meetings').innerText = meetings
+  }
+  var takePicture = document.querySelector("#Take-Picture"),
+			showPicture = document.createElement("img");
+			Result = document.querySelector("#textbit");
+			var canvas =document.getElementById("picture");
+			var ctx = canvas.getContext("2d");
+			JOB.Init();
+			JOB.SetImageCallback(function(result) {
+				if(result.length > 0){
+					var tempArray = [];
+					for(var i = 0; i < result.length; i++) {
+						tempArray.push("Student ID" +" : "+result[i].Value);
+					}
+          Result.innerHTML=tempArray.join("<br />");
+          let txtr = document.querySelector('#textbit').innerText.split(': ')[1]
+          updateStats(txtr)
+				}else{
+					if(result.length === 0) {
+						Result.innerHTML="Decoding failed.";
+					}
+				}
+			});
+			JOB.PostOrientation = true;
+			JOB.OrientationCallback = function(result) {
+				canvas.width = result.width;
+				canvas.height = result.height;
+				var data = ctx.getImageData(0,0,canvas.width,canvas.height);
+				for(var i = 0; i < data.data.length; i++) {
+					data.data[i] = result.data[i];
+				}
+				ctx.putImageData(data,0,0);
+			};
+			JOB.SwitchLocalizationFeedback(true);
+			JOB.SetLocalizationCallback(function(result) {
+				ctx.beginPath();
+				ctx.lineWIdth = "2";
+				ctx.strokeStyle="red";
+				for(var i = 0; i < result.length; i++) {
+					ctx.rect(result[i].x,result[i].y,result[i].width,result[i].height);
+				}
+				ctx.stroke();
+			});
+			if(takePicture && showPicture) {
+				takePicture.onchange = function (event) {
+					var files = event.target.files;
+					if (files && files.length > 0) {
+						file = files[0];
+						try {
+							var URL = window.URL || window.webkitURL;
+							showPicture.onload = function(event) {
+								Result.innerHTML="";
+								JOB.DecodeImage(showPicture);
+								URL.revokeObjectURL(showPicture.src);
+							};
+							showPicture.src = URL.createObjectURL(file);
+						}
+						catch (e) {
+							try {
+								var fileReader = new FileReader();
+								fileReader.onload = function (event) {
+									showPicture.onload = function(event) {
+										Result.innerHTML="";
+										JOB.DecodeImage(showPicture);
+									};
+									showPicture.src = event.target.result;
+								};
+								fileReader.readAsDataURL(file);
+							}
+							catch (e) {
+								Result.innerHTML = "Neither createObjectURL or FileReader are supported";
+							}
+						}
+					}
+				};
+			}
+</script>
+
+
+
 <script>
                 new WOW().init();
   /*var hammertime = new Hammer(document.querySelector('body'));
@@ -265,10 +377,8 @@ for (let i = 0; i < cardData.length; i++) {
   const ranColor = colors[Math.floor(Math.random()*colors.length)];
   const html = `
 <div class="card testimonial-card wow fadeInUp" style="max-width: 22rem;">
-
 <!-- Background color -->
 <div class="card-up" style = "background-color:${ranColor}"></div>
-
 <!-- Avatar -->
 <div class="avatar mx-auto white">
   <img src="${officer[2]}" class="rounded-circle" alt="woman avatar">
@@ -281,10 +391,11 @@ for (let i = 0; i < cardData.length; i++) {
   <!-- Quotation -->
   <p><i class="fas fa-circle"></i> ${officer[1]}</p>
 </div>
-
 </div>`
 cardInject.innerHTML += html
 }
+
+
 particlesJS("particles-js", {
     "particles": {
         "number": {
@@ -401,6 +512,10 @@ particlesJS("particles-js", {
   #about, #team, #contact{
     display: none;
   }
+  #picture{
+    border-radius: 10px;
+    display: none
+  }
   .ra-header{
     display: none !important;
   }
@@ -422,10 +537,34 @@ particlesJS("particles-js", {
 .navbar.is-link .navbar-brand > .navbar-item, .navbar.is-link .navbar-brand .navbar-link{
   border-radius: 15px;
 }
+.color-grad{
+  color: #BE2B37
+}
 .hero{
     border-radius: 10px;
     border-radius: 30px;
+    background: linear-gradient(270deg, #ff1660, #3598e3);
+background-size: 600% 600%;
 
+-webkit-animation: AnimationName 30s ease infinite;
+-moz-animation: AnimationName 30s ease infinite;
+animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 .usr-links{
     margin-top: 20px;
@@ -533,6 +672,9 @@ h4{font-weight:300;}
 }
 #dime .title{
   color: #fff;
+}
+body{
+  background-color: #F5F5F7 !important
 }
 </style>
 </body>
